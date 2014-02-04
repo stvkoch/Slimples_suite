@@ -2,7 +2,7 @@
 return array(
     'slim'=>array(),
     'template-path'=> __APPLICATION__ . '/View',
-    'template-cache'=> __ROOT__ . '/Cache/Frontend', //or any where do you like ... maybe /tmp/cache/frontend ?
+    'template-cache'=> '/tmp/Cache/Frontend', //or any where do you like ... maybe /tmp/cache/frontend ?
     'facebook'=>array(
         'appId' => 'YOUR_APP_ID',
         'secret' => 'YOUR_APP_SECRET',
