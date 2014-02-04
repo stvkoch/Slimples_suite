@@ -14,7 +14,6 @@ $loader->add('Service\\', __ROOT__);
 
 
 Dotenv::load(__ROOT__);
-Dotenv::load(__APPLICATION__);
 
 //Slim initialization
 $app = new \Slim\Slim( array(
