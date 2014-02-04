@@ -3,6 +3,7 @@ Install
 
 - git clone this!
 - composer install #install dependencies
+- mkdir -p Cache/Frontend
 - cd Task #set environment values with maki
 	- ../vendor/bin/maki list #list all tasks
 	- ../vendor/bin/maki write-env
