@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="fitness" defaultIdMethod="native">
+
+  <table name="users" phpName="User">
+    <column name="id" type="integer" required="true" primaryKey="true"/>
+    <column name="name" type="varchar" size="255" required="true" />
+    <column name="provider" type="varchar" size="50" required="true" />
+    <behavior name="timestampable" />
+  </table>
+
+  <table name="trainings" phpName="Training">
+    <column name="id" type="integer" primaryKey="true" autoIncrement="true"/>
+    <column name="user_id" type="integer"/>
+    <column name="name" type="varchar" size="255" required="true" />
+    <column name="info" type="varchar" size="255" />
+    <behavior name="timestampable" />
+    <foreign-key foreignTable="users">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+    <behavior name="i18n">
+      <parameter name="i18n_columns" value="name, info" />
+    </behavior>
+  </table>
+
+  <table name="exercises" phpName="Exercise">
+    <column name="id" type="integer" primaryKey="true" autoIncrement="true"/>
+    <column name="user_id" type="integer"/>
+    <column name="name" type="varchar" size="255" required="true" />
+    <column name="info" type="varchar" size="255" />
+    <behavior name="timestampable" />
+    <foreign-key foreignTable="users">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+    <behavior name="i18n">
+      <parameter name="i18n_columns" value="name, info" />
+    </behavior>
+  </table>
+
+  <table name="exercices_trainings" isCrossRef="true">
+    <column name="exercise_id" type="integer" primaryKey="true"/>
+    <column name="training_id" type="integer" primaryKey="true"/>
+    <behavior name="timestampable" />
+    <foreign-key foreignTable="exercises">
+      <reference local="exercise_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key foreignTable="trainings">
+      <reference local="training_id" foreign="id"/>
+    </foreign-key>
+  </table>
+
+  <table name="schedules" phpName="Schedule">
+    <column name="user_id" type="integer" primaryKey="true"/>
+    <column name="training_id" type="integer" primaryKey="true"/>
+    <column name="week" type="integer"/>
+    <column name="date_start" type="TIMESTAMP"/>
+    <column name="date_end" type="TIMESTAMP"/>
+    <behavior name="timestampable" />
+    <foreign-key foreignTable="users">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key foreignTable="trainings">
+      <reference local="training_id" foreign="id"/>
+    </foreign-key>
+  </table>
+
+  <table name="medias" phpName="Media">
+    <column name="id" type="integer" primaryKey="true" autoIncrement="true"/>
+    <column name="exercise_id" type="integer"/>
+    <column name="hash" type="varchar" size="255" required="true" />
+    <column name="name" type="varchar" size="255" required="true" />
+    <behavior name="timestampable" />
+    <foreign-key foreignTable="exercises">
+      <reference local="exercise_id" foreign="id"/>
+    </foreign-key>
+  </table>
+
+  <table name="statistics" phpName="Statistic">
+    <column name="id" type="integer" primaryKey="true" autoIncrement="true"/>
+    <column name="user_id" type="integer"/>
+    <column name="exercise_id" type="integer"/>
+    <column name="repeats" type="integer" required="true"/>
+    <column name="weight" type="integer" required="true" />
+    <behavior name="timestampable" />
+    <foreign-key foreignTable="exercises">
+      <reference local="exercise_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key foreignTable="users">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+  </table>
+
+
+  <!-- <table name="tags" phpName="Tag">
+    <column name="id" type="integer" primaryKey="true" autoIncrement="true"/>
+    <column name="name" type="varchar" size="255" required="true" />
+    <behavior name="i18n">
+      <parameter name="i18n_columns" value="name" />
+    </behavior>
+  </table>
+  <table name="object_tags" isCrossRef="true">
+    <column name="tag_id" type="integer" primaryKey="true"/>
+    <column name="foreign_id" type="integer" primaryKey="true" required="true" />
+    <column name="foreign_table" type="varchar" size="255" primaryKey="true"/>
+    <foreign-key foreignTable="tags">
+      <reference local="tag_id" foreign="id"/>
+    </foreign-key>
+  </table> -->
+
+</database>
+<!--
+
+users
+  id (PK)
+  name
+  provider
+trainings
+  id (PK)
+  name
+  info
+schedule
+  training_id (PK)
+  user_id (PK)
+  date_init
+  date_end
+  week(bitwise) (dom-sab) 0000000
+
+exercices_trainings
+  exercise_id (PK)
+  training_id (PK)
+exercises
+  id (PK)
+  name
+  info
+tags
+  id (PK)
+  name
+tags_object
+  tag_id (PK)
+  table_name
+  record_id (PK)
+
+<foreign-key foreignTable="author">
+      <reference local="author_id" foreign="id"/>
+    </foreign-key>
+
+-->

@@ -1,0 +1,3 @@
+
+Encapsule especific logic that not concern in model, controllers or presenters
+http://stevelorek.com/service-objects.html

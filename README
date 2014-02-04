@@ -1,0 +1,17 @@
+
+Install
+
+- git clone this!
+- composer install #install dependencies
+- cd Task #set environment values with maki
+	- ../vendor/bin/maki list #list all tasks
+	- ../vendor/bin/maki write-env
+		- Add key: environment
+		- Add value: developement|production
+		   ...if add more information like S3_KEY... FACEBOOK_KEY... DSN_DATABASE, etc...
+		- Add key: quit #to exit maki write_env
+	- maki copy-build-propel
+- Configure webserver to read Public/Frontend/index.php (see Application/Frontend/Config/apache/vhost.conf)
+- maybe you need configure /etc/hosts with your local domain
+- restart webserver
+

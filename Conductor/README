@@ -1,0 +1,2 @@
+
+Independ of orm, this layer access your data model, uncouple you application with any orm. You can create a conductor to handles multi-model forms

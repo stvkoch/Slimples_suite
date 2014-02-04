@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--PROPEL CONFIG-->
+<config>
+  <propel>
+    <datasources default="YOURPROJECTNAME-prod">
+      <datasource id="YOURPROJECTNAME-prod">
+        <adapter>mysql</adapter> <!-- sqlite, mysql, mssql, oracle, or pgsql -->
+        <connection>
+          <dsn>mysql:host=YOUR_SCHEMA_HOST;port=3307;dbname=YOUDATABASENAME</dsn>
+          <user>USERNAME</user>
+          <password>PASSWORD</password>
+        </connection>
+      </datasource>
+    </datasources>
+  </propel>
+</config>

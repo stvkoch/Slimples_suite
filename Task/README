@@ -1,0 +1,7 @@
+
+
+you need install maki (https://github.com/stvkoch/Maki)
+
+try on terminal
+maki list
+maki read-env
