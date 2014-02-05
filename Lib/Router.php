@@ -57,11 +57,13 @@ class Router extends \Lib\Config
     {
         $app = $this->app;
         $folder = $this->path.'/'.$this->app->getMode();
-        if(file_exists($folder.'/'.$file));
-            require $this->path.'/'.$file;
-        if(file_exists($this->path.'/'.$file));
-            require $this->path.'/'.$file;
 
+        if(file_exists($folder.'/'.$file)){
+            require $this->path.'/'.$file;
+        }
+        if(file_exists($this->path.'/'.$file)){
+            require $this->path.'/'.$file;
+        }
         return $this;
     }
 
