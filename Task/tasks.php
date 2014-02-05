@@ -4,6 +4,20 @@
 set('LOCAL_BASE_DIR', __DIR__.'/../');
 
 // maki remove twig-cache
+task('create-folders-app', function(){
+	$appName = ucfirst( prompt('Name:', 'green') );
+	if(!$appName){
+		message('hum.. please, define application name', 'red');
+		return false;
+	}
+	local('mkdir -p '.get('LOCAL_BASE_DIR').'/Application/'.$appName.'/Config');
+	local('mkdir -p '.get('LOCAL_BASE_DIR').'/Application/'.$appName.'/Controller');
+	local('mkdir -p '.get('LOCAL_BASE_DIR').'/Application/'.$appName.'/View');
+	local('mkdir -p '.get('LOCAL_BASE_DIR').'/Public/'.$appName.'');
+	message('Copy index.php from Public file to '.get('LOCAL_BASE_DIR').'/Public/'.$appName);
+});
+
+// maki remove twig-cache
 task('remove', 'twig-cache', function(){
 	local('find Cache/* -d -type d -exec rm -rf \'{}\' \;');
 });
@@ -50,6 +64,11 @@ task('write-env', function(){
 
 	while(true) {
 		$key = prompt('Add key: ');
+		if($key == ''){
+			message('Cannot add empty key. Enter "quit" to exit and press two enters', 'red');
+			continue;
+		}
+
 		$value = prompt('Add value: ');
 		if($key == 'quit' && $value == '') break;
 		if(!$value && isset($data[$key]))

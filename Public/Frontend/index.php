@@ -28,7 +28,7 @@ $config = new \Lib\Config(__APPLICATION__.'/Config', $app, 'application.php' );
 include __APPLICATION__.'/Config/bootstrap.php';
 
 //view layer
-$view->setTemplatesDirectory(\Lib\Config::get('template-path'));
+$app->view()->setTemplatesDirectory(\Lib\Config::get('template-path'));
 
 //route your application
 $router = new \Lib\Router(__APPLICATION__.'/Config/routes', $app);
